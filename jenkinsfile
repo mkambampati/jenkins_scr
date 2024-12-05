@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('git_clone') {
+            steps {
+                git branch: 'main', url: 'https://github.com/mkambampati/tf_j.git'
+            }
+        }
+        stage('init') {
+            steps {
+                sh 'terraform init'
+            }
+        }
+        stage('Plan') {
+            steps {
+                sh 'terraform plan'
+            }
+        }
+        stage('approve/destroy') {
+            steps {
+                sh 'terraform ${action} -auto-approve'
+            }
+        }
+    }
+}
