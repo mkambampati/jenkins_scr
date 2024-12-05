@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('git_clone') {
             steps {
-                git branch: 'main', url: 'https://github.com/mkambampati/tf_j.git'
+                git branch: 'main', url: 'https://github.com/mkambampati/Flask_App.git'
             }
         }
         stage('init') {
